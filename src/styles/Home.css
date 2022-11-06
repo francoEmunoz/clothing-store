@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.home-body{
+    background-color: #fed800;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* carrousel */
+
+.our-products{
+    /* background-color: aqua; */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 3rem;
+    color: #983275;
+}
