@@ -1,0 +1,16 @@
+.container-navbar{
+    background-color: #811d5e !important;
+}
+
+.font-navbar{
+    color: white !important;
+    font-weight: 500 !important;
+}
+.font-navbar:hover{
+    color: rgb(221, 221, 221) !important;
+    background-color: #983275 !important;
+}
+
+.navbar-nav .nav-link.active{
+    color: #ff6f01 !important;
+}
