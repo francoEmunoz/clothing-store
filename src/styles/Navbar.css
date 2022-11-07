@@ -14,3 +14,11 @@
 .navbar-nav .nav-link.active{
     color: #ff6f01 !important;
 }
+
+.navbar-toggler{
+    background-color: #fed800 !important;
+}
+
+.nav-link-img{
+    padding-right: 20px !important;
+}
