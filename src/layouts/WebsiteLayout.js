@@ -22,8 +22,8 @@ function WebsiteLayout(props) {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
                 <Nav.Link href="/" className='font-navbar'>Home</Nav.Link>
-                <Nav.Link href="#products" className='font-navbar'>Products</Nav.Link>
-                <Nav.Link href="#contact" className='font-navbar'>Contact</Nav.Link>
+                <Nav.Link href="/products" className='font-navbar'>Products</Nav.Link>
+                <Nav.Link href="/contact" className='font-navbar'>Contact</Nav.Link>
               </Nav>
               <Nav>
                 <Nav.Link href="#memes">
