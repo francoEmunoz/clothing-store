@@ -12,8 +12,8 @@ export default function Footer() {
           </div>
           <div className='footer-pages'>
             <LinkRouter to="/">Home</LinkRouter>
-            <LinkRouter to="#">Products</LinkRouter>
-            <LinkRouter to="#">Contact</LinkRouter>
+            <LinkRouter to="/products">Products</LinkRouter>
+            <LinkRouter to="/contact">Contact</LinkRouter>
             <LinkRouter to="#">Login</LinkRouter>
           </div>
         </div>

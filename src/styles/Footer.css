@@ -41,6 +41,10 @@
     padding-bottom: 3rem;
 }
 
+.container-networks img{
+    cursor: pointer;
+}
+
 .container-footer-main p{
     color: white;
 }
