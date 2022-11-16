@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Products from './pages/Products';
 import Contact from './pages/Contact';
 import WebsiteLayout from './layouts/WebsiteLayout';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/products' element={<Products />} />
           <Route path='/contact' element={<Contact />} />
+          <Route path='/*' element={<NotFound />} />
         </Routes>
       </WebsiteLayout>
     </BrowserRouter>
