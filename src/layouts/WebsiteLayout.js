@@ -31,7 +31,7 @@ function WebsiteLayout(props) {
                 </Nav.Link>
               </Nav>
               <Nav>
-                <Nav.Link href="#deets" className='font-navbar'>Login</Nav.Link>
+                <Nav.Link href="/signin" className='font-navbar'>Login</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
