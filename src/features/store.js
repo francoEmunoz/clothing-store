@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import usersAPI from './userAPI'
+import usersAPI from './usersAPI'
 import loggedSlice from './loggedSlice'
 import productsAPI from './productsAPI'
 export const store = configureStore({
