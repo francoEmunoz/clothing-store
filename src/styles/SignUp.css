@@ -6,10 +6,10 @@
     justify-content: center;
 }
 
-.form{
+.form-sign-up{
     background-color: #983275;
     border-radius: 2rem;
-    height: 30rem;
+    height: 43rem;
     width: 45%;
     display: flex;
     flex-direction: column;
@@ -18,7 +18,7 @@
 
 }
 
-.form h3{
+.form-sign-up h3{
     color: white;
     margin-bottom: 2.5rem;
 }
@@ -42,6 +42,7 @@
 
 .sign-in-input input{
     padding-left: 4px;
+    text-decoration: none;
 }
 
 .sign-in-input label{
@@ -58,13 +59,8 @@
     padding: 3px 0 3px 0;
 }
 
-.go-signup a{
-    text-decoration: none;
-    color: white;
-}
-
 @media screen and (max-width:768px) {
-    .form{
+    .form-sign-up{
         width: 90%;
     }
 }
