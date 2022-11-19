@@ -1,10 +1,9 @@
 import React, { useRef } from 'react';
-import { useSignInMutation } from '../features/userAPI';
+import { useSignInMutation } from '../features/usersAPI';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../features/loggedSlice';
 import Swal from 'sweetalert2';
 import { useNavigate } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
 import { Link as LinkRouter } from "react-router-dom";
 import '../styles/SignIn.css';
 
@@ -33,16 +32,15 @@ export default function SignIn() {
                 dispatch(setUser(response.data.response.user))
                 localStorage.setItem('token', response.data.response.token)
                 Swal.fire({
-                    title: 'Error!',
-                    text: 'Do you want to continue',
-                    icon: 'error',
+                    title: "Welcome " + response.data.response.user.name,
+                    icon: 'success',
                     confirmButtonText: 'Cool'
                 })
                 navigate("/", { replace: true })
             } else {
                 Swal.fire({
                     title: 'Error!',
-                    text: 'Do you want to continue',
+                    text: 'Invalid credentials',
                     icon: 'error',
                     confirmButtonText: 'Cool'
                 })

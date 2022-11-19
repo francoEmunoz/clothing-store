@@ -5,10 +5,13 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Link as LinkRouter } from "react-router-dom";
+import { useSelector } from "react-redux";
+import SignOut from '../components/SignOut';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function WebsiteLayout(props) {
+
+  const user = useSelector((state) => state.logged.user);
 
   return (
     <>
@@ -31,7 +34,12 @@ function WebsiteLayout(props) {
                 </Nav.Link>
               </Nav>
               <Nav>
-                <Nav.Link href="/signin" className='font-navbar'>Login</Nav.Link>
+                {user ? (
+                  <SignOut/>
+                ) : (
+                  <Nav.Link href="/signin" className='font-navbar'>Login</Nav.Link>
+                )
+                }
               </Nav>
             </Navbar.Collapse>
           </Container>

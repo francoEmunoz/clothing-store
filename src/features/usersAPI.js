@@ -9,10 +9,11 @@ export const usersAPI = createApi({
     endpoints: (builder) => ({
 
         profileOne: builder.mutation({
-                query: (id) => ({
+            query: (id) => ({
                 url: `/users/${id}`,
                 method: 'GET',
-                headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
+                headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+            })
         }),
         signUp: builder.mutation({
             query: (body) => ({
@@ -34,7 +35,7 @@ export const usersAPI = createApi({
             query: (token) => ({
                 url: '/users/token',
                 method: 'GET',
-                headers: {Authorization: `Bearer ${token}` }
+                headers: { Authorization: `Bearer ${token}` }
             })
         }),
         signOut: builder.mutation({
@@ -49,10 +50,10 @@ export const usersAPI = createApi({
                 url: `/users/${body._id}`,
                 method: 'PATCH',
                 body: body,
-                headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
+                headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             }),
         }),
     })
 })
 export default usersAPI
-export const { useProfileOneMutation ,useSignUpMutation, useSignInMutation, useSignOutMutation, useSignInTokenMutation, useEditProfileMutation } = usersAPI
+export const { useProfileOneMutation, useSignUpMutation, useSignInMutation, useSignOutMutation, useSignInTokenMutation, useEditProfileMutation } = usersAPI
