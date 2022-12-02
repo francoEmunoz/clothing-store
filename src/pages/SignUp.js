@@ -60,7 +60,7 @@ export default function SignUpForm() {
                             return (
                                 <div className='sign-in-input'>
                                     <label htmlFor={element.item} > {element.item} </label>
-                                    <input type={element.type} ref={element.value} required placeholder='|' />
+                                    <input type={element.type} ref={element.value} />
                                 </div>
                             )
                         })

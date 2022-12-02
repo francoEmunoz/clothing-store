@@ -4,8 +4,10 @@ import loggedSlice from './loggedSlice'
 import productsAPI from './productsAPI'
 export const store = configureStore({
     reducer: {
+        logged: loggedSlice,
         [usersAPI.reducerPath]: usersAPI.reducer,
         [productsAPI.reducerPath]: productsAPI.reducer,
-        logged: loggedSlice,
-    }
+    },
+    middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(usersAPI.middleware)
 })
