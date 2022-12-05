@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link as LinkRouter } from "react-router-dom";
+import { useSelector } from "react-redux";
 import '../styles/Footer.css';
 
 export default function Footer() {
+
+  const user = useSelector((state) => state.logged.user);
+
   return (
     <div className='container-footer-main'>
       <div className='container-footer'>
@@ -14,7 +18,13 @@ export default function Footer() {
             <LinkRouter to="/">Home</LinkRouter>
             <LinkRouter to="/products">Products</LinkRouter>
             <LinkRouter to="/contact">Contact</LinkRouter>
-            <LinkRouter to="#">Login</LinkRouter>
+            {user ? null
+              : (
+                <>
+                  <LinkRouter to="/signin">Login</LinkRouter>
+                  <LinkRouter to="/signup">Sign Up</LinkRouter>
+                </>
+              )}
           </div>
         </div>
         <div className='container-networks'>
