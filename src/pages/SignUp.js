@@ -2,7 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { useSignUpMutation } from "../features/usersAPI";
 import { useRef } from "react";
 import Swal from 'sweetalert2';
-import '../styles/SignUp.css'
+import SignUpGoogle from "../components/SignUpGoogle";
+import '../styles/SignUp.css';
 
 export default function SignUpForm() {
 
@@ -54,6 +55,7 @@ export default function SignUpForm() {
         <div className='sign-in-body'>
             <form className='form-sign-up' onSubmit={submitInfo}>
                 <h3>SIGN UP</h3>
+                <SignUpGoogle />
                 <div className='sign-in-input-container'>
                     {
                         SignInArray.map((element) => {
