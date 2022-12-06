@@ -5,6 +5,7 @@ import { setUser } from '../features/loggedSlice';
 import Swal from 'sweetalert2';
 import { useNavigate } from "react-router-dom";
 import { Link as LinkRouter } from "react-router-dom";
+import SignInGoogle from '../components/SignInGoogle';
 import '../styles/SignIn.css';
 
 export default function SignIn() {
@@ -51,6 +52,7 @@ export default function SignIn() {
         <div className='sign-in-body'>
             <form className='form' onSubmit={submitInfo}>
                 <h3>LOG IN</h3>
+                <SignInGoogle />
                 <div className='sign-in-input-container'>
                     {
                         SignInArray.map((element) => {
