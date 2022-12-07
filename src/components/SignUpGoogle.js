@@ -25,22 +25,42 @@ export default function SignUpGoogle() {
         Swal.fire({
           title: "It has been successfully registered",
           icon: 'success',
-          confirmButtonText: 'Cool'
-      });
+          confirmButtonText: 'Ok',
+          position: 'bottom-end',
+          backdrop: false,
+          toast: true,
+          timer: 3000,
+          timerProgressBar: true,
+          confirmButtonColor: '#fd2f24',
+          width: '16em',
+          color: '#983275',
+      })
         navigate("/signin", { replace: true })
       } else {
         Swal.fire({
-          title: 'Error!',
-          text: response.data.message,
+          title: response.data.message,
           icon: 'error',
-          confirmButtonText: 'Cool'
+          confirmButtonText: 'Ok',
+          position: 'bottom-end',
+          backdrop: false,
+          toast: true,
+          timer: 3000,
+          timerProgressBar: true,
+          confirmButtonColor: '#fd2f24',
+          color: '#983275',
       })
         if (response.error) {
           Swal.fire({
-            title: 'Error!',
-            text: response.data.message,
+            title: response.data.message,
             icon: 'error',
-            confirmButtonText: 'Cool'
+            confirmButtonText: 'Ok',
+            position: 'bottom-end',
+            backdrop: false,
+            toast: true,
+            timer: 3000,
+            timerProgressBar: true,
+            confirmButtonColor: '#fd2f24',
+            color: '#983275',
         })
         }
         navigate("/signin", { replace: true })

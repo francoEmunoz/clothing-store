@@ -17,11 +17,17 @@ export default function SignOut() {
             if (res.data?.success) {
                 dispatch(deleteUser())
                 localStorage.removeItem('token')
-                // dispatch(clear())
                 Swal.fire({
-                    text: `Come back soon ${user.name}!`,
+                    title: `Come back soon ${user.name}!`,
                     icon: 'success',
-                    confirmButtonText: 'Cool'
+                    confirmButtonText: 'Ok',
+                    position: 'bottom-end',
+                    backdrop: false,
+                    toast: true,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    confirmButtonColor: '#fd2f24',
+                    color: '#983275',
                 })
                 navigate("/", { replace: true })
             }else{

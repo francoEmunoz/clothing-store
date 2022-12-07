@@ -8,7 +8,7 @@ export const productsAPI = createApi({
     tagTypes: ['Post'],
     endpoints: (builder) => ({
         getAllProducts: builder.query({
-            query: (obj) => `/products?product=${obj.product}&category=${obj.category}&sort=${obj.sort}&subcategory=${obj.subcategory}`
+            query: (obj) => `/products?product=${obj.product}&category=${obj.category}&sort=${obj.sort}`
         }),
         getProduct: builder.mutation({
             query: (id) => ({
