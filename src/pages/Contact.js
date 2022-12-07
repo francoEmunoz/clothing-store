@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
-import '../styles/Contact.css'
+import Swal from 'sweetalert2';
+import '../styles/Contact.css';
 
 function Input({ label, name, type }) {
   return (
@@ -23,6 +24,18 @@ export default function Contact() {
       message: formData.get("message"),
       affair: formData.get("affair"),
     };
+    Swal.fire({
+      title: 'Your message has been sent !',
+      icon: 'success',
+      confirmButtonText: 'Ok',
+      position: 'bottom-end',
+      backdrop: false,
+      toast: true,
+      timer: 3000,
+      timerProgressBar: true,
+      confirmButtonColor: '#fd2f24',
+      color: '#983275',
+  })
 
     form.current.reset();
   };

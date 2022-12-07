@@ -27,15 +27,30 @@ export default function SignInGoogle() {
                     Swal.fire({
                         title: "Welcome " + response.data.response.user.name,
                         icon: 'success',
-                        confirmButtonText: 'Cool'
+                        confirmButtonText: 'Ok',
+                        position: 'bottom-end',
+                        backdrop: false,
+                        toast: true,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        confirmButtonColor: '#fd2f24',
+                        width: '16em',
+                        color: '#983275',
                     })
                     navigate("/", { replace: true })
                 } else {
                     Swal.fire({
-                        title: 'Error!',
-                        text: `${response.error.data.message}`,
+                        text: 'Invalid credentials',
                         icon: 'error',
-                        confirmButtonText: 'Cool'
+                        confirmButtonText: 'Ok',
+                        position: 'bottom-end',
+                        backdrop: false,
+                        toast: true,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        confirmButtonColor: '#fd2f24',
+                        color: '#983275',
+                        width: '17em'
                     })
                 }
             })
