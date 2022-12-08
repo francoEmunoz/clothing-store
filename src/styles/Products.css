@@ -1,3 +1,36 @@
 .products-body{
     background-color: #fed800;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    min-height: 51vh;
+}
+
+.container-cards{
+    /* background-color: aqua; */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.filters{
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.cards-container h2{
+    text-align: center;
+    padding-top: 1rem;
+}
+.no-results{
+    text-align: center;
+    padding-top: 5rem;
+}
+
+.search-box input{
+    padding-left: 3px;
 }
