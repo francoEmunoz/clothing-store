@@ -1,11 +1,31 @@
 import React from 'react';
 import { Link as LinkRouter } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useState, useEffect } from 'react'
 import '../styles/Footer.css';
 
 export default function Footer() {
 
   const user = useSelector((state) => state.logged.user);
+
+  const [scrollToTop, setScrollToTop] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        setScrollToTop(true)
+      } else {
+        setScrollToTop(false)
+      }
+    })
+  }, [])
+
+  const scroll = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
 
   return (
     <div className='container-footer-main'>
@@ -35,6 +55,11 @@ export default function Footer() {
         </div>
       </div>
       <p>© 2022 Dripping, Inc. All rights reserved.</p>
+      {scrollToTop && (
+        <div>
+          <img className='scroll' src="https://cdn-icons-png.flaticon.com/512/892/892682.png" alt="scrolltopage" onClick={scroll}></img>
+        </div>
+      )}
     </div>
   )
 }
