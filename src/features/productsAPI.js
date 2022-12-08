@@ -10,10 +10,9 @@ export const productsAPI = createApi({
         getAllProducts: builder.query({
             query: (obj) => `/products?product=${obj.product}&category=${obj.category}&sort=${obj.sort}`
         }),
-        getProduct: builder.mutation({
+        getProduct: builder.query({
             query: (id) => ({
-                url: `/products/${id}`,
-                method: 'GET'
+                url: (id) => '/products/' + id
             })
         }),
         deleteOneProduct: builder.mutation({
@@ -50,4 +49,4 @@ export const productsAPI = createApi({
     })
 })
 export default productsAPI
-export const { useGetAllProductsQuery, useGetProductMutation, useDeleteOneProductMutation, useEditProductMutation, useGetNewProductMutation, useGetAllProductsNoFilterMutation } = productsAPI
+export const { useGetAllProductsQuery, useGetProductQuery, useDeleteOneProductMutation, useEditProductMutation, useGetNewProductMutation, useGetAllProductsNoFilterMutation } = productsAPI
