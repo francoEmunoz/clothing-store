@@ -1,8 +1,8 @@
 .container-card{
-    background-color: aqua;
+    background-color: white;
     width: 20rem;
     padding: 1%;
-    margin: 1rem;
+    margin: 1%;
 }
 
 .img-card{
@@ -17,4 +17,20 @@
 
 .card-description{
     margin-top: 7px;
+    border-top: 2px solid #fd2f24;
+    padding-top: 5px;
 }
+
+.card-description h5{
+    color: #811d5e;
+    font-weight: bolder;
+}
+
+.card-description a{
+    text-decoration: none;
+}
+
+.card-description p{
+    font-weight: bolder;
+}
+
