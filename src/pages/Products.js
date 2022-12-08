@@ -24,7 +24,7 @@ export default function Products() {
           }
           }
           >
-            <option value=''>Categories</option>
+            <option value=''>All categories</option>
             <option value='Shoes'>Shoes</option>
             <option value='T-shirts'>T-shirts</option>
             <option value='Jackets'>Jackets</option>
@@ -32,7 +32,7 @@ export default function Products() {
         </div>
         <div className='selects'>
           <select onChange={(e) => setSort(e.target.value)}>
-            <option value=''>Order by</option>
+            <option disabled value="empty" selected>Order by</option>
             <option value='1'>Lowest price</option>
             <option value='-1'>Highest price</option>
           </select>
@@ -44,6 +44,7 @@ export default function Products() {
       <div className='cards-container'>
           <>
             <h2>{category === "" ? 'All products' : category}</h2>
+            <div className='container-cards'>
             {
               products?.map(item =>
                 <ProductCard key={item._id}
@@ -55,8 +56,9 @@ export default function Products() {
                   stock={item.stock}
                 />)
             }
+            </div>
             {
-              products?.length === 0 && <p>No results</p>
+              products?.length === 0 && <p className='no-results'>No results</p>
             }
           </>
       </div>
