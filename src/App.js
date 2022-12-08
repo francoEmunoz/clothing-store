@@ -8,6 +8,7 @@ import WebsiteLayout from './layouts/WebsiteLayout';
 import NotFound from './pages/NotFound';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import Details from './pages/Details';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from './features/loggedSlice';
 import { useSignInTokenMutation } from './features/usersAPI';
@@ -51,6 +52,7 @@ function App() {
             <Route path='/*' element={<NotFound />} />
             <Route path='/signin' element={!user ? <SignIn /> : <Home />} />
             <Route path='/signup' element={!user ? <SignUp /> : <Home />} />
+            <Route path='/products/:id' element={<Details />} />
           </Routes>
         </WebsiteLayout>
     </BrowserRouter>
