@@ -11,9 +11,7 @@ export const productsAPI = createApi({
             query: (obj) => `/products?product=${obj.product}&category=${obj.category}&sort=${obj.sort}`
         }),
         getProduct: builder.query({
-            query: (id) => ({
-                url: (id) => '/products/' + id
-            })
+            query: (id) => '/products/' + id
         }),
         deleteOneProduct: builder.mutation({
             query: (id) => ({
