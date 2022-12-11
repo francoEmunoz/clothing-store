@@ -1,13 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 .home-body{
     background-color: #fed800;
     width: 100%;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,4 +62,14 @@
     color: #983275 !important;
     font-weight: bold !important;
     text-shadow: 1px 2px 2px black !important
+}
+
+@media screen and (max-width:425px) {
+    .call-to-action{
+        height: 180px;
+    }
+
+    .home-body{
+        gap: 1.5rem;
+    }
 }
