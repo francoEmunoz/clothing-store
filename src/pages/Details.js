@@ -38,10 +38,16 @@ export default function Details() {
                 <img src={product?.response.photo} alt={product?.name} />
             </div>
             <div className='info-detail'>
-                <p className='category'>{product?.response.category}</p>
-                <p className='name-p'>{product?.response.name}</p>
-                <h3 className='price'>${product?.response.price}</h3>
-                <LinkRouter to='/products'>Continue shopping!</LinkRouter>
+                <div className='container-detail'>
+                    <p className='name-p'>{product?.response.name}</p>
+                    <h3 className='price'>${product?.response.price}</h3>
+                    <p className='category'>{product?.response.category}</p>
+                </div>
+                <div className='add-to-cart'>
+                    <p>{product?.response.stock} Available</p>
+                    <button type='button'>Add to cart</button>
+                </div>
+                <LinkRouter to='/products'>Return to the store</LinkRouter>
             </div>
             {/* {modalEditProduct && (
                 <Modal>
