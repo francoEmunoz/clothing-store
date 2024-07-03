@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useSignOutMutation } from '../features/usersAPI';
 import { deleteUser } from '../features/loggedSlice';
 import Swal from 'sweetalert2';
-// import { clear } from '../../features/cartSlice';
 
 export default function SignOut() {
     let user = useSelector((state) => state.logged.user)
@@ -13,8 +12,8 @@ export default function SignOut() {
     const navigate = useNavigate()
     async function signOutfn() {
         try {
-            let res = await signOut(user.id)
-            if (res.data?.success) {
+            let res = await signOut(user.ID)
+            if (res?.data) {
                 dispatch(deleteUser())
                 localStorage.removeItem('token')
                 Swal.fire({
@@ -22,7 +21,6 @@ export default function SignOut() {
                     icon: 'success',
                     confirmButtonText: 'Ok',
                     position: 'bottom-end',
-                    backdrop: false,
                     toast: true,
                     timer: 3000,
                     timerProgressBar: true,

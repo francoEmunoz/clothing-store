@@ -1,0 +1,39 @@
+.container-cart{
+    background-color: #fed800;
+    min-height: 70vh
+}
+
+.container-cart h2{
+    color: #811d5e;
+}
+
+.container-cart img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.container-cart button{
+    background-color: #983275;
+    color: white;
+    border: none;
+}
+
+.container-cart button:hover{
+    background-color: #fd2f24;
+    color: white;
+}
+
+.cart-empty{
+    font-size: 50px;
+}
+
+.btn-return{
+    color: white;
+    text-decoration: none;
+}
+
+.btn-return:hover{
+    color: white;
+    text-decoration: none;
+}

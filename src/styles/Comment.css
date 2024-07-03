@@ -1,0 +1,14 @@
+.btn-comment{
+    background-color: #983275;
+    color: white;
+    border: none;
+}
+
+.btn-comment:hover{
+    background-color: #fd2f24;
+    color: white;
+}
+
+.text-comment{
+    color: #811d5e;
+}

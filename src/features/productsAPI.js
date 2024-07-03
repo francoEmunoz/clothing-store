@@ -8,43 +8,43 @@ export const productsAPI = createApi({
     tagTypes: ['Post'],
     endpoints: (builder) => ({
         getAllProducts: builder.query({
-            query: (obj) => `/products?product=${obj.product}&category=${obj.category}&sort=${obj.sort}`
-        }),
+            query: ({ name, category, orderBy }) => {
+              let queryString = '/product/?';
+              if (name) queryString += `name=${name}&`;
+              if (category) queryString += `category=${category}&`;
+              if (orderBy) queryString += `order_by=${orderBy}&`;
+              return queryString.slice(0, -1);
+            },
+          }),
         getProduct: builder.query({
-            query: (id) => '/products/' + id
+            query: (ID) => '/product/' + ID
         }),
         deleteOneProduct: builder.mutation({
-            query: (id) => ({
-                url: `/products/${id}`,
+            query: (ID) => ({
+                url: `/product/${ID}`,
                 method: 'DELETE',
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             })
         }),
         editProduct: builder.mutation({
             query: (body) => ({
-                url: `/products/${body._id}`,
-                method: 'PATCH',
+                url: `/product/${body.ID}`,
+                method: 'PUT',
                 body: body,
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             })
         }),
-        getNewProduct: builder.mutation({
+        createProduct: builder.mutation({
             query(product) {
                 return {
-                    url: "/products",
+                    url: "/product/",
                     method: "POST",
                     body: product,
                     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
                 };
             },
-        }),
-        getAllProductsNoFilter: builder.mutation({
-            query: () => ({
-                url: `/products`,
-                method: 'GET',
-            })
-        }),
+        })
     })
 })
 export default productsAPI
-export const { useGetAllProductsQuery, useGetProductQuery, useDeleteOneProductMutation, useEditProductMutation, useGetNewProductMutation, useGetAllProductsNoFilterMutation } = productsAPI
+export const { useGetAllProductsQuery, useGetProductQuery, useDeleteOneProductMutation, useEditProductMutation, useCreateProductMutation, useGetAllProductsNoFilterMutation } = productsAPI

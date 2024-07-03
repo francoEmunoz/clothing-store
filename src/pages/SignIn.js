@@ -1,12 +1,11 @@
 import React, { useRef } from 'react';
 import { useSignInMutation } from '../features/usersAPI';
 import { useDispatch } from 'react-redux';
-import { setUser } from '../features/loggedSlice';
-import Swal from 'sweetalert2';
-import { useNavigate } from "react-router-dom";
+import { setUser, setToken } from '../features/loggedSlice';
+import { useNavigate, useLocation  } from "react-router-dom";
 import { Link as LinkRouter } from "react-router-dom";
-import SignInGoogle from '../components/SignInGoogle';
 import '../styles/SignIn.css';
+import { showErrorAlert, showSuccessAlert } from '../utils/alertsUtils';
 
 export default function SignIn() {
 
@@ -14,65 +13,48 @@ export default function SignIn() {
     const dispatch = useDispatch()
     const useRefEmail = useRef()
     const useRefPassword = useRef()
+
+    const location = useLocation();
     const navigate = useNavigate()
+
     const SignInArray = [
         { item: "Email", type: "email", value: useRefEmail, id: "signIn1", min: 4, max: 100 },
         { item: "Password", type: "password", value: useRefPassword, id: "signIn2", min: 3, max: 100 },
     ]
+
     function submitInfo(text) {
         text.preventDefault();
 
         const userSignIn = {
-            mail: useRefEmail.current.value,
-            password: useRefPassword.current.value,
-            role: 'user',
-            from: 'form'
+            email: useRefEmail.current.value,
+            plainPassword: useRefPassword.current.value,
+            role: 'user'
         }
         signInUser(userSignIn).then(response => {
-            if (response.data?.success) {
-                dispatch(setUser(response.data.response.user))
-                localStorage.setItem('token', response.data.response.token)
-                Swal.fire({
-                    title: "Welcome " + response.data.response.user.name,
-                    icon: 'success',
-                    confirmButtonText: 'Ok',
-                    position: 'bottom-end',
-                    backdrop: false,
-                    toast: true,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    confirmButtonColor: '#fd2f24',
-                    width: '16em',
-                    color: '#983275',
-                })
-                navigate("/", { replace: true })
+            if (response.data) {
+                dispatch(setToken(response.data.token))
+                dispatch(setUser(response.data.user))
+                localStorage.setItem('token', response.data.token)
+
+                showSuccessAlert('Welcome '+ response.data.user.name);
+                
+                const returnTo = new URLSearchParams(location.search).get('returnTo') || '/';
+                navigate(returnTo, { replace: true });
             } else {
-                Swal.fire({
-                    text: 'Invalid credentials',
-                    icon: 'error',
-                    confirmButtonText: 'Ok',
-                    position: 'bottom-end',
-                    backdrop: false,
-                    toast: true,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    confirmButtonColor: '#fd2f24',
-                    color: '#983275',
-                    width: '17em'
-                })
+                showErrorAlert('Invalid credentials');
             }
         }).catch((error) => console.log(error))
     }
+
     return (
         <div className='sign-in-body'>
             <form className='form' onSubmit={submitInfo}>
                 <h3>LOG IN</h3>
-                <SignInGoogle />
                 <div className='sign-in-input-container'>
                     {
-                        SignInArray.map((element) => {
+                        SignInArray.map((element, index) => {
                             return (
-                                <div className='sign-in-input'>
+                                <div key={index} className='sign-in-input'>
                                     <label htmlFor={element.item} > {element.item} </label>
                                     <input type={element.type} ref={element.value} />
                                 </div>
