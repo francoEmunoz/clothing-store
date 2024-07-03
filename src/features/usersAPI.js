@@ -8,16 +8,16 @@ export const usersAPI = createApi({
     tagTypes: ['Post'],
     endpoints: (builder) => ({
 
-        profileOne: builder.mutation({
-            query: (id) => ({
-                url: `/users/${id}`,
+        profile: builder.query({
+            query: (ID) => ({
+                url: `/user/${ID}`,
                 method: 'GET',
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             })
         }),
         signUp: builder.mutation({
             query: (body) => ({
-                url: '/users/signup',
+                url: '/signup/',
                 method: 'POST',
                 body: body,
             }),
@@ -25,7 +25,7 @@ export const usersAPI = createApi({
         }),
         signIn: builder.mutation({
             query: (body) => ({
-                url: '/users/signin',
+                url: '/login/',
                 method: 'POST',
                 body: body,
             }),
@@ -33,22 +33,22 @@ export const usersAPI = createApi({
         }),
         signInToken: builder.mutation({
             query: (token) => ({
-                url: '/users/token',
+                url: '/token/',
                 method: 'GET',
                 headers: { Authorization: `Bearer ${token}` }
             })
         }),
         signOut: builder.mutation({
-            query: (id) => ({
-                url: `/users/signout/${id}`,
+            query: (ID) => ({
+                url: `/logout/${ID}`,
                 method: 'POST',
             }),
             invalidatesTags: ['Post'],
         }),
         editProfile: builder.mutation({
             query: (body) => ({
-                url: `/users/${body._id}`,
-                method: 'PATCH',
+                url: `/user/${body.ID}`,
+                method: 'PUT',
                 body: body,
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             }),
@@ -56,4 +56,4 @@ export const usersAPI = createApi({
     })
 })
 export default usersAPI
-export const { useProfileOneMutation, useSignUpMutation, useSignInMutation, useSignOutMutation, useSignInTokenMutation, useEditProfileMutation } = usersAPI
+export const { useProfileQuery, useSignUpMutation, useSignInMutation, useSignOutMutation, useSignInTokenMutation, useEditProfileMutation } = usersAPI

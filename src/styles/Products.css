@@ -3,7 +3,11 @@
     padding: 2%;
     display: flex;
     flex-direction: column;
-    min-height: 51vh;
+    min-height: 70vh;
+}
+
+.products-body h2{
+    color: #811d5e;
 }
 
 .container-cards{
@@ -12,6 +16,18 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    width: 100%;
+}
+
+.btn-comment{
+    background-color: #983275;
+    color: white;
+    border: none;
+}
+
+.btn-comment:hover{
+    background-color: #fd2f24;
+    color: white;
 }
 
 .filters{
@@ -25,12 +41,42 @@
 .cards-container h2{
     text-align: center;
     padding-top: 1rem;
+    color: #811d5e;
+    font-weight: bolder;
 }
+
+.cards-container button{
+    background-color: #983275;
+    color: white;
+    border: none;
+}
+
+.cards-container button:hover{
+    background-color: #fd2f24;
+    color: white;
+}
+
 .no-results{
     text-align: center;
     padding-top: 5rem;
+    font-size: 35px;
 }
 
 .search-box input{
     padding-left: 3px;
+}
+
+.btn-product{
+    background-color: #983275;
+    color: white;
+    border: none;
+}
+
+.btn-product:hover{
+    background-color: #fd2f24;
+    color: white;
+}
+
+.modal-title{
+    color: #811d5e;
 }

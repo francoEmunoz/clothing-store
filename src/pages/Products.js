@@ -1,28 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useGetAllProductsQuery } from '../features/productsAPI';
-import ProductCard from '../components/ProductCard';
-import '../styles/Products.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { setProducts } from '../features/productsSlice';
+import ProductCard from '../components/ProductCard/ProductCard';
+import '../styles/Products.css';
 
 export default function Products() {
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products.items);
 
-  const [sort, setSort] = useState('')
-  const [product, setProduct] = useState('')
-  const [category, setCategory] = useState('')
-  const [subcategory, setSubcategory] = useState('')
-  const { data, isLoading } = useGetAllProductsQuery({ sort: sort, category: category, product: product, subcategory: subcategory })
-  let products = data?.response.products
+  const [orderBy, setOrderBy] = useState('');
+  const [product, setProduct] = useState('');
+  const [category, setCategory] = useState('');
 
+  const { data } = useGetAllProductsQuery({
+    category: category,
+    name: product,
+    orderBy: orderBy,
+  });
 
+  useEffect(() => {
+    if (data) {
+      dispatch(setProducts(data));
+    }
+  }, [data, dispatch]);
 
   return (
     <div className='products-body'>
       <div className='filters'>
         <div className='selects'>
-          <select onChange={(e) => {
-            setCategory(e.target.value)
-            setSubcategory('')
-          }
-          }
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
           >
             <option value=''>All categories</option>
             <option value='Shoes'>Shoes</option>
@@ -31,37 +40,47 @@ export default function Products() {
           </select>
         </div>
         <div className='selects'>
-          <select onChange={(e) => setSort(e.target.value)}>
-            <option disabled value="empty" selected>Order by</option>
-            <option value='1'>Lowest price</option>
-            <option value='-1'>Highest price</option>
+          <select
+            value={orderBy}
+            onChange={(e) => setOrderBy(e.target.value)}>
+            <option disabled value='empty' selected>
+              Order by
+            </option>
+            <option value='price_asc'>Lowest price</option>
+            <option value='price_desc'>Highest price</option>
           </select>
         </div>
         <div className='search-box'>
-          <input type="text" placeholder='Search here' id='searchbar' value={product} onChange={(e) => setProduct(e.target.value)} />
+          <input
+            type='text'
+            placeholder='Search here'
+            id='searchbar'
+            value={product}
+            onChange={(e) => setProduct(e.target.value)}
+          />
         </div>
       </div>
       <div className='cards-container'>
-          <>
-            <h2>{category === "" ? 'All products' : category}</h2>
+        <>
+          <h2>{category === '' ? 'All products' : category}</h2>
+          <div className='d-flex flex-column align-items-center w-100'>
             <div className='container-cards'>
-            {
-              products?.map(item =>
-                <ProductCard key={item._id}
-                  id={item._id}
+              {products?.map((item) => (
+                <ProductCard
+                  key={item.ID}
+                  id={item.ID}
                   name={item.name}
                   category={item.category}
                   price={item.price}
                   photo={item.photo}
                   stock={item.stock}
-                />)
-            }
+                />
+              ))}
             </div>
-            {
-              products?.length === 0 && <p className='no-results'>No results</p>
-            }
-          </>
+          </div>
+          {products?.length === 0 && <p className='no-results'>No results :(</p>}
+        </>
       </div>
     </div>
-  )
+  );
 }
